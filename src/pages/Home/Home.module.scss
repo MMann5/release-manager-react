@@ -1,0 +1,12 @@
+.container {
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.list {
+  display: flex;
+  justify-content: space-around;
+}
