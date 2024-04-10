@@ -76,8 +76,7 @@ const Home = () => {
       <SkeletonCmp display={loading} />
       <ErrorCmp display={!loading && error} retry={getConfigTable} />
       <NoDataCmp display={!loading && Object.values(allData)?.length === 0} />
-      {!loading && JSON.stringify(allData)}
-      {Object.keys(allData).map((key: string, index: number) => {
+      !loading && {Object.keys(allData).map((key: string, index: number) => {
         return (
           <div
             key={index}
