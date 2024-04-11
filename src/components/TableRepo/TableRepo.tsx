@@ -1,22 +1,22 @@
-import React, { FC } from "react";
-import { StyledTableCell, StyledTableRow } from "./TableCmp.style";
-import { Data } from "../../utils/models";
+import { FC } from "react";
+import { StyledTableCell, StyledTableRow } from "./TableRepo.style";
+import { Data, GlobalConfig } from "../../utils/models";
 import { useSelector } from "react-redux";
+import { formattingDate } from "../../utils/helpers";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { formattingDate } from "../../utils/helpers";
 
 interface TableProps {
   display: boolean;
+  data: Data[];
 }
 
-const TableCmp: FC<TableProps> = ({ display }) => {
-  const data = useSelector((state: any) => state.data.data);
-  const globalConfig = useSelector((state: any) => state.globalConfig.globalConfig);
+const TableRepo: FC<TableProps> = ({ display, data }) => {
+  const globalConfig: GlobalConfig = useSelector((state: any) => state.globalConfig.globalConfig);
 
   return display ? (
     <TableContainer component={Paper}>
@@ -75,4 +75,4 @@ const TableCmp: FC<TableProps> = ({ display }) => {
   ) : null;
 };
 
-export default TableCmp;
+export default TableRepo;

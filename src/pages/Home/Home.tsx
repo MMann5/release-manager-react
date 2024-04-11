@@ -1,29 +1,20 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { getConfig, getDataAllRepo } from "../../services/api";
-import { useDispatch, useSelector } from "react-redux";
-import { setAllData } from "../../redux/data";
-import NoDataCmp from "../../components/NoDataCmp/NoDataCmp";
-import styles from "./Home.module.scss";
-import SkeletonCmp from "../../components/SkeletonCmp/SkeletonCmp";
-import ErrorCmp from "../../components/ErrorCmp/ErrorCmp";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import {
-  StyledTableCell,
-  StyledTableRow,
-} from "../../components/TableCmp/TableCmp.style";
 import { Data } from "../../utils/models";
+import { setAllData } from "../../redux/data";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getConfig, getDataAllRepo } from "../../services/api";
+import ErrorCmp from "../../components/ErrorCmp/ErrorCmp";
+import NoDataCmp from "../../components/NoDataCmp/NoDataCmp";
+import SkeletonCmp from "../../components/SkeletonCmp/SkeletonCmp";
+import styles from "./Home.module.scss";
+import TableAllData from "../../components/TableAllData/TableAllData";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const allData = useSelector((state: any) => state.data.allData);
-  console.log("allData", allData);
 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
@@ -44,6 +35,13 @@ const Home = () => {
   };
 
   const getAllData = async (envs: string[]) => {
+    // const dataFromLocalStorage = getFromLocalStorage("allData");
+    // if (dataFromLocalStorage) {
+    //   dispatch(setAllData(dataFromLocalStorage));
+    //   setLoading(false);
+    //   return;
+    // }
+
     setLoading(true);
     let results: any = [];
 
@@ -54,13 +52,8 @@ const Home = () => {
         });
       });
       await Promise.all(promises);
-      results = results?.reduce((acc: any, item: Data) => {
-        if (!acc[item.repository] && !!item.repository) {
-          acc[item.repository] = [];
-        }
-        if (!!item.repository) acc[item.repository].push(item);
-        return acc;
-      }, {});
+      results = FormattingResults(results);
+      // setInLocalStorage("allData", results);
       dispatch(setAllData(results));
     } catch (error) {
       setError(true);
@@ -70,41 +63,34 @@ const Home = () => {
     }
 
     return results;
+
+    function FormattingResults(results: any) {
+      return results?.reduce((acc: any, item: Data) => {
+        if (!acc[item.repository] && !!item.repository) {
+          acc[item.repository] = [];
+        }
+        if (!!item.repository) acc[item.repository].push(item);
+        return acc;
+      }, {});
+    }
   };
+
+  const navigateToRepository = (repository: string) => {
+    if (!repository) return;
+    navigate(`/repository/${repository}`);
+  };
+
   return (
     <div className={styles.container}>
       <SkeletonCmp display={loading} />
       <ErrorCmp display={!loading && error} retry={getConfigTable} />
       <NoDataCmp display={!loading && Object.values(allData)?.length === 0} />
-      {!loading &&
-        Object.keys(allData).map((key: string, index: number) => {
-          return (
-            <div
-              key={index}
-              style={{
-                display: "flex",
-                margin: "10px",
-                padding: "10px",
-                border: "1px solid black",
-                borderRadius: "5px",
-                gap: "10px",
-                justifyContent: "space-between",
-              }}
-            >
-              <div>{key}</div>
-              {allData[key].map((repo: Data, index: number) => {
-                return (
-                  <div
-                    key={index}
-                    style={{ display: "flex", flexDirection: "column" }}
-                  >
-                    <div>{repo.version}</div>
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
+      {!loading && !error && (
+        <TableAllData
+          allData={allData}
+          navigateToRepository={navigateToRepository}
+        />
+      )}
     </div>
   );
 };

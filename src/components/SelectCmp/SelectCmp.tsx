@@ -47,7 +47,7 @@ const SelectCmp: FC = () => {
           })}
         </Select>
       </FormControl>
-      <FormControl fullWidth>
+      {/* <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">REPO</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -66,7 +66,7 @@ const SelectCmp: FC = () => {
             );
           })}
         </Select>
-      </FormControl>
+      </FormControl> */}
     </Box>
   );
 };

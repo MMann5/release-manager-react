@@ -6,7 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { StyledTableCell, StyledTableRow } from "../TableCmp/TableCmp.style";
+import { StyledTableCell, StyledTableRow } from "../TableRepo/TableRepo.style";
 
 interface SkeletonCmpProps {
   display: boolean;

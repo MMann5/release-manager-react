@@ -4,11 +4,13 @@ import TableRow from "@mui/material/TableRow";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: "#a92f62",
     color: theme.palette.common.white,
+    fontSize: 22,
+    fontWeight: "bold",
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
+    fontSize: 20,
   },
 }));
 
