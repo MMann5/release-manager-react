@@ -9,9 +9,9 @@ import { mappingFields } from "../../utils/helpers";
 import { setData } from "../../redux/data";
 import TableRepo from "../../components/TableRepo/TableRepo";
 import NoDataCmp from "../../components/NoDataCmp/NoDataCmp";
-import styles from "./Repository.module.scss";
 import SkeletonCmp from "../../components/SkeletonCmp/SkeletonCmp";
 import SelectCmp from "../../components/SelectCmp/SelectCmp";
+import styles from "./Repository.module.scss";
 
 const Repository = () => {
   const dispatch = useDispatch();

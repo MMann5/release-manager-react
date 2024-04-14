@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const HOST = "https://release-manager-nestjs-fcbbf35eec82.herokuapp.com";
+const HOST = process.env.REACT_APP_API_HOST;
 
 export const getConfig = async () => {
   const config = await axios.get(`${HOST}/config`);

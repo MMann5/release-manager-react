@@ -1,17 +1,15 @@
-import React, { FC } from "react";
+import { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setConfig } from "../../redux/config";
 import Select from "@mui/material/Select";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import { useDispatch, useSelector } from "react-redux";
 
 const SelectCmp: FC = () => {
   const dispatch = useDispatch();
-  const globalConfig = useSelector(
-    (state: any) => state.globalConfig.globalConfig
-  );
+  const globalConfig = useSelector((state: any) => state.globalConfig.globalConfig);
   const config = useSelector((state: any) => state.config.config);
 
   const handleChange = (event: any) => {

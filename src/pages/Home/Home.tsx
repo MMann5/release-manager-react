@@ -7,8 +7,8 @@ import { getConfig, getDataAllRepo } from "../../services/api";
 import ErrorCmp from "../../components/ErrorCmp/ErrorCmp";
 import NoDataCmp from "../../components/NoDataCmp/NoDataCmp";
 import SkeletonCmp from "../../components/SkeletonCmp/SkeletonCmp";
-import styles from "./Home.module.scss";
 import TableAllData from "../../components/TableAllData/TableAllData";
+import styles from "./Home.module.scss";
 
 const Home = () => {
   const dispatch = useDispatch();

@@ -1,8 +1,7 @@
 import { FC } from "react";
-import { StyledTableCell, StyledTableRow } from "./TableRepo.style";
+import { StyledTableCell } from "./TableRepo.style";
 import { Data, GlobalConfig } from "../../utils/models";
 import { useSelector } from "react-redux";
-import { formattingDate } from "../../utils/helpers";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";

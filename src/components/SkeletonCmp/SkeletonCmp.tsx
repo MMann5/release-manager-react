@@ -1,4 +1,5 @@
-import React, { FC } from "react";
+import { FC } from "react";
+import { StyledTableCell, StyledTableRow } from "../TableRepo/TableRepo.style";
 import styles from "./SkeletonCmp.module.scss";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -6,7 +7,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { StyledTableCell, StyledTableRow } from "../TableRepo/TableRepo.style";
 
 interface SkeletonCmpProps {
   display: boolean;
