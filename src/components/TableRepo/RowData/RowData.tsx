@@ -10,9 +10,7 @@ interface RowDataProps {
 const RowData: FC<RowDataProps> = ({ info }) => {
   return (
     <StyledTableRow>
-      <StyledTableCell align="left">
-        {info?.repo_manager || "No Data"}
-      </StyledTableCell>
+      <StyledTableCell align="left">{info?.repo_manager}</StyledTableCell>
       <StyledTableCell align="left">{info?.repository}</StyledTableCell>
       <StyledTableCell align="left">{info?.tag}</StyledTableCell>
       <StyledTableCell align="left">{info?.version}</StyledTableCell>
@@ -26,12 +24,10 @@ const RowData: FC<RowDataProps> = ({ info }) => {
         {formattingDate(info?.created_at)}
       </StyledTableCell>
       <StyledTableCell align="left">
-        {info?.remoteUrl ? (
+        {info?.remoteUrl && (
           <a href={info?.remoteUrl} target="_blank">
             Open
           </a>
-        ) : (
-          "No Data"
         )}
       </StyledTableCell>
     </StyledTableRow>

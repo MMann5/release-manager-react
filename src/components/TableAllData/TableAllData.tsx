@@ -1,6 +1,9 @@
 import { Data } from "../../utils/models";
 import { SFOA, UAT, PROD } from "../../config/key";
-import { StyledTableCell, StyledTableRow } from "../../components/TableRepo/TableRepo.style";
+import {
+  StyledTableCell,
+  StyledTableRow,
+} from "../../components/TableRepo/TableRepo.style";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableRow from "@mui/material/TableRow";
@@ -53,8 +56,10 @@ const TableAllData = ({ allData, navigateToRepository }: TableAllDataProps) => {
                   style={{
                     backgroundColor: "#2276f0",
                     color: "white",
-                    fontSize: 22,
+                    fontSize: 20,
                     fontWeight: "bold",
+                    position: "sticky",
+                    left: 0,
                   }}
                 >
                   <div

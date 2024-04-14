@@ -46,9 +46,7 @@ const Repository = () => {
     setLoading(false);
   };
 
-  const navigateBack = () => {
-    navigate("/");
-  };
+  const navigateBack = () => navigate("/");
 
   const getRepository = async (repo: string, env: string) => {
     setLoading(true);

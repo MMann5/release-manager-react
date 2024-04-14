@@ -5,6 +5,7 @@ import CommitOutlinedIcon from "@mui/icons-material/CommitOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import CloudQueueIcon from "@mui/icons-material/CloudQueue";
 import LinkIcon from "@mui/icons-material/Link";
+import HelpIcon from "@mui/icons-material/Help";
 import styles from "../TableAllData.module.scss";
 
 interface CellDataProps {
@@ -14,7 +15,7 @@ interface CellDataProps {
 const CellData = ({ item }: CellDataProps) => {
   return (
     <>
-      <div>{item?.version ? "" : "No Data"}</div>
+      <div>{item?.version ? "" : <HelpIcon sx={{ color: "#2276f0" }} />}</div>
       {item?.version && (
         <div className={styles.cell}>
           <CloudQueueIcon sx={{ color: "#2276f0" }} />

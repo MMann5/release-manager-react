@@ -12,6 +12,16 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
     fontSize: 18,
   },
+
+  // mobile
+  [`@media (max-width: 600px)`]: {
+    [`&.${tableCellClasses.head}`]: {
+      fontSize: 14,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 12,
+    },
+  },
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
