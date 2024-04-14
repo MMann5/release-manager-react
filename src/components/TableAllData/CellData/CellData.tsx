@@ -1,10 +1,11 @@
 import { formattingDate } from "../../../utils/helpers";
+import { Data } from "../../../utils/models";
 import HistoryIcon from "@mui/icons-material/History";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import CommitOutlinedIcon from "@mui/icons-material/CommitOutlined";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import CloudQueueIcon from "@mui/icons-material/CloudQueue";
 import LinkIcon from "@mui/icons-material/Link";
-import { Data } from "../../../utils/models";
-import styles from "./CellData.module.scss";
+import styles from "../TableAllData.module.scss";
 
 interface CellDataProps {
   item: Data;
@@ -14,29 +15,34 @@ const CellData = ({ item }: CellDataProps) => {
   return (
     <>
       <div>{item?.version ? "" : "No Data"}</div>
-      <div>{item?.version}</div>
+      {item?.version && (
+        <div className={styles.cell}>
+          <CloudQueueIcon sx={{ color: "#2276f0" }} />
+          v.{item.version}
+        </div>
+      )}
       {item?.commit && (
         <div className={styles.cell}>
-          <CloudQueueIcon />
+          <CommitOutlinedIcon sx={{ color: "#2276f0" }} />
           {`${item?.commit?.slice(0, 15)}...`}
         </div>
       )}
       {item?.remoteUrl && (
         <div className={styles.cell}>
-          <LinkIcon />
+          <LinkIcon sx={{ color: "#2276f0" }} />
           {item.remoteUrl}
         </div>
       )}
       {item?.created_by && (
         <div className={styles.cell}>
-          <AccountCircleIcon />
+          <AccountCircleOutlinedIcon sx={{ color: "#2276f0" }} />
           {item.created_by}
         </div>
       )}
       <div>
         {item?.created_at && (
           <div className={styles.cell}>
-            <HistoryIcon />
+            <HistoryIcon sx={{ color: "#2276f0" }} />
             {formattingDate(item.created_at)}
           </div>
         )}

@@ -22,11 +22,11 @@ export const mappingFields = (list: string[]) => {
     tag: "Tag",
     version: "Version",
     description: "Description",
-    ref: "Ref",
+    ref: "Reference",
     commit: "Commit",
     createdBy: "Created By",
-    createdAt: "Created At",
-    remoteUrl: "Remote URL",
+    createdAt: "Creation Date",
+    remoteUrl: "URL",
   };
   return list.map((item: string) => fields[item]);
 };

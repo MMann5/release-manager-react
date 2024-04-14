@@ -51,7 +51,7 @@ const TableAllData = ({ allData, navigateToRepository }: TableAllDataProps) => {
                   component="th"
                   scope="row"
                   style={{
-                    backgroundColor: "#a92f62",
+                    backgroundColor: "#2276f0",
                     color: "white",
                     fontSize: 22,
                     fontWeight: "bold",
